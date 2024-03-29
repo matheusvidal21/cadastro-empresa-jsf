@@ -14,7 +14,41 @@
 		<f:viewAction action="#{gestaoEmpresasBean.todasEmpresas}"/>
 	</f:metadata>
 
-	<h:form>
+	<h:form>	 
+		<p:toolbar>
+			<p:toolbarGroup>
+				<p:inputText placeholder="Digite aqui um termo para pesquisa..." size="30"/>
+				
+				<p:spacer width="14px"/>
+
+				<p:commandButton type="button" value="Pesquisar" icon="pi pi-search" styleClass="mr-2"/>
+				
+				<p:spacer width="9px"/>
+				<i class="pi pi-bars px-2"/>
+				<p:spacer width="9px"/>
+				 
+				<p:commandButton value="Nova" icon="pi pi-plus"/>
+				
+				<p:spacer width="9px"/>
+				<i class="pi pi-bars px-2"/>
+				<p:spacer width="9px"/>
+				
+				<p:commandButton title="Editar" icon="pi pi-file-edit"/>
+				<p:spacer width="9px"/>
+				<p:commandButton title="Excluir" icon="pi pi-trash"/>
+				
+				<p:spacer width="9px"/>
+				<i class="pi pi-bars px-2"/>
+				<p:spacer width="9px"/>
+				
+				<p:commandButton title="Exportar para o Excel" icon="pi pi-file-export"/>
+			
+			</p:toolbarGroup>
+
+		</p:toolbar>
+		
+		<p:spacer height="20px"/>
+	
 		<p:dataTable value="#{gestaoEmpresasBean.listaEmpresas}"
 			var="empresa" emptyMessage="Nenhuma informação a ser exibida"
 			paginator="true" rows="10" paginatorPosition="bottom">

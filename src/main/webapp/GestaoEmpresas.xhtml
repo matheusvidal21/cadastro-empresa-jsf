@@ -27,7 +27,7 @@
 				<i class="pi pi-bars px-2"/>
 				<p:spacer width="9px"/>
 				 
-				<p:commandButton value="Nova" icon="pi pi-plus"/>
+				<p:commandButton value="Nova" icon="pi pi-plus" onclick="PF('empresaDialogWidgetVar').show()"/>
 				
 				<p:spacer width="9px"/>
 				<i class="pi pi-bars px-2"/>
@@ -70,6 +70,12 @@
 			</p:column>
 			
 		</p:dataTable>
+		
+		<p:dialog header="Nova empresa" widgetVar="empresaDialogWidgetVar" 
+			modal="true" resizable="false" closeOnEscape="true">
+			<p:commandButton value="teste"/>
+		</p:dialog>
+		
 	</h:form>
 	
 </ui:define>

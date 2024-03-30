@@ -14,24 +14,30 @@
 		<f:viewAction action="#{gestaoEmpresasBean.todasEmpresas}"/>
 	</f:metadata>
 
-	<h:form>	 
-		<p:messages  id="message" autoUpdate="true"/>
+	<h:form id="frm">	 
+		<p:messages  id="message"/>
 	
 		<p:toolbar>
 			<p:toolbarGroup>
-				<p:inputText placeholder="Digite aqui um termo para pesquisa..." size="30"
-				value="#{gestaoEmpresasBean.termoPesquisa}"/>
+				<p:inputText id="termoPesquisa" placeholder="Digite aqui um termo para pesquisa..." size="30"
+					value="#{gestaoEmpresasBean.termoPesquisa}"/>
 				
 				<p:spacer width="14px"/>
 
 				<p:commandButton value="Pesquisar" icon="pi pi-search"
-				actionListener="#{gestaoEmpresasBean.pesquisar}" update="empresasDataTable, message"/>
+					actionListener="#{gestaoEmpresasBean.pesquisar}" update="empresasDataTable message"
+					process="@this termoPesquisa"/>
 				
 				<p:spacer width="9px"/>
 				<i class="pi pi-bars px-2"/>
 				<p:spacer width="9px"/>
 				 
-				<p:commandButton value="Nova" icon="pi pi-plus" onclick="PF('empresaDialogWidgetVar').show()"/>
+				<p:commandButton value="Nova" icon="pi pi-plus" 
+					actionListener="#{gestaoEmpresasBean.prepararNovaEmpresa}"
+					oncomplete="PF('empresaDialogWidgetVar').show()"
+					update="empresaDialog" process="@this">
+					<p:resetInput target="empresaDialog" />
+				</p:commandButton>	
 				
 				<p:spacer width="9px"/>
 				<i class="pi pi-bars px-2"/>
@@ -75,9 +81,69 @@
 			
 		</p:dataTable>
 		
-		<p:dialog header="Nova empresa" widgetVar="empresaDialogWidgetVar" 
+		<p:dialog id="empresaDialog" header="Nova empresa" widgetVar="empresaDialogWidgetVar" 
 			modal="true" resizable="false" closeOnEscape="true">
-			<p:commandButton value="teste"/>
+			<p:messages  id="messageDialog" autoUpdate="true"/>
+			
+			<p:defaultCommand target="salvarCommandButton" scope="empresaDialog"/>
+			
+			<h:panelGrid id="empresaPanelGrid" columns="2"
+				rendered="#{gestaoEmpresasBean.empresa ne null}">
+				<p:outputLabel value="Razão social: " for="razaoSocial"/>
+				<p:inputText id="razaoSocial" size="80" maxlength="120"
+					value="#{gestaoEmpresasBean.empresa.razaoSocial}"/>
+				
+				<h:outputLabel />
+				<p:spacer height="1px"/>
+
+				<p:outputLabel value="Nome fantasia: " for="nomeFantasia"/>
+				<p:inputText id="nomeFantasia" size="80" maxlength="80"
+					value="#{gestaoEmpresasBean.empresa.nomeFantasia}"/>	
+				
+				<h:outputLabel />
+				<p:spacer height="1px"/>
+							
+				<p:outputLabel value="Tipo de empresa: " for="tipo"/>
+				<p:selectOneMenu id="tipo" value="#{gestaoEmpresasBean.empresa.tipo}">
+					<f:selectItem itemLabel="Selecione..."/>
+					<f:selectItems value="#{gestaoEmpresasBean.tiposEmpresas}"
+						var="tipoEmpresa" itemLabel="#{tipoEmpresa.descricao}" itemValue="#{tipoEmpresa}"/>
+				</p:selectOneMenu>
+				
+				<h:outputLabel />
+				<p:spacer height="1px"/>
+				
+				<p:outputLabel value="CNPJ: " for="cnpj"/>
+				<p:inputMask id="cnpj" mask="99.999.999/9999-99" size="18" maxlength="18"
+					value="#{gestaoEmpresasBean.empresa.cnpj}"/>
+				
+				<h:outputLabel />
+				<p:spacer height="1px"/>
+				
+				<p:outputLabel value="Data de fundação: " for="dataFundacao"/>	
+				<p:calendar id="dataFundacao" pattern="dd/MM/yyyy" size="30"
+					value="#{gestaoEmpresasBean.empresa.dataFundacao}"/>
+				
+				<h:outputLabel />
+				<p:spacer height="1px"/>
+				
+				<p:outputLabel value="Ramo atividade:" for="ramoAtividade"/>
+				<p:autoComplete id="ramoAtividade" size="80"
+					value="#{gestaoEmpresasBean.empresa.ramoAtividade}"
+					completeMethod="#{gestaoEmpresasBean.completarRamoAtividade}"
+					converter="#{gestaoEmpresasBean.ramoAtividadeConverter}"
+					var="ramoAtividade" itemLabel="#{ramoAtividade.descricao}" itemValue="#{ramoAtividade}"/>
+				
+				<h:outputLabel />
+				<p:spacer height="1px"/>
+				
+				<h:outputLabel />
+				<p:commandButton id="salvarCommandButton" value="Salvar" actionListener="#{gestaoEmpresasBean.salvar}"
+					update="empresaPanelGrid messageDialog"
+					oncomplete="if (!args.validationFailed) PF('empresaDialogWidgetVar').hide()"
+					process="empresaDialog"/>
+				
+			</h:panelGrid>
 		</p:dialog>
 		
 	</h:form>

@@ -15,13 +15,17 @@
 	</f:metadata>
 
 	<h:form>	 
+		<p:messages  id="message" autoUpdate="true"/>
+	
 		<p:toolbar>
 			<p:toolbarGroup>
-				<p:inputText placeholder="Digite aqui um termo para pesquisa..." size="30"/>
+				<p:inputText placeholder="Digite aqui um termo para pesquisa..." size="30"
+				value="#{gestaoEmpresasBean.termoPesquisa}"/>
 				
 				<p:spacer width="14px"/>
 
-				<p:commandButton type="button" value="Pesquisar" icon="pi pi-search" styleClass="mr-2"/>
+				<p:commandButton value="Pesquisar" icon="pi pi-search"
+				actionListener="#{gestaoEmpresasBean.pesquisar}" update="empresasDataTable, message"/>
 				
 				<p:spacer width="9px"/>
 				<i class="pi pi-bars px-2"/>
@@ -49,7 +53,7 @@
 		
 		<p:spacer height="20px"/>
 	
-		<p:dataTable value="#{gestaoEmpresasBean.listaEmpresas}"
+		<p:dataTable id="empresasDataTable" value="#{gestaoEmpresasBean.listaEmpresas}"
 			var="empresa" emptyMessage="Nenhuma informação a ser exibida"
 			paginator="true" rows="10" paginatorPosition="bottom">
 			

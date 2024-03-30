@@ -28,8 +28,8 @@ public class Empresas implements Serializable {
 	}
 	
 	public List<Empresa> pesquisar(String nome){
-		TypedQuery<Empresa> query = manager.createQuery("from Empresa where nomeFantasia like :nomeFantasia", Empresa.class);
-		query.setParameter("nomeFantasia", nome + "%");
+		TypedQuery<Empresa> query = manager.createQuery("from Empresa where razaoSocial like :razaoSocial", Empresa.class);
+		query.setParameter("razaoSocial", nome + "%");
 		return query.getResultList(); 
 	}
 	

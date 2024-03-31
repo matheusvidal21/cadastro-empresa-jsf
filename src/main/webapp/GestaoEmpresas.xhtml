@@ -17,7 +17,7 @@
 	<h:form id="frm">	 
 		<p:messages  id="message"/>
 	
-		<p:toolbar>
+		<p:toolbar id="toolbar">
 			<p:toolbarGroup>
 				<p:inputText id="termoPesquisa" placeholder="Digite aqui um termo para pesquisa..." size="30"
 					value="#{gestaoEmpresasBean.termoPesquisa}"/>
@@ -43,9 +43,11 @@
 				<i class="pi pi-bars px-2"/>
 				<p:spacer width="9px"/>
 				
-				<p:commandButton title="Editar" icon="pi pi-file-edit"/>
+				<p:commandButton title="Editar" icon="pi pi-file-edit"
+					disabled="#{not gestaoEmpresasBean.empresaSelecionada}"/>
 				<p:spacer width="9px"/>
-				<p:commandButton title="Excluir" icon="pi pi-trash"/>
+				<p:commandButton title="Excluir" icon="pi pi-trash"
+					disabled="#{not gestaoEmpresasBean.empresaSelecionada}"/>
 				
 				<p:spacer width="9px"/>
 				<i class="pi pi-bars px-2"/>
@@ -61,7 +63,13 @@
 	
 		<p:dataTable id="empresasDataTable" value="#{gestaoEmpresasBean.listaEmpresas}"
 			var="empresa" emptyMessage="Nenhuma informação a ser exibida"
-			paginator="true" rows="10" paginatorPosition="bottom">
+			paginator="true" rows="10" paginatorPosition="bottom"
+			selectionMode="single" selection="#{gestaoEmpresasBean.empresa}"
+			rowKey="#{empresa.id}">
+			
+			<p:ajax event="rowSelect" update="frm:toolbar"/>
+			<p:ajax event="rowUnselect" update="frm:toolbar"/>
+			
 			
 			<p:column headerText="Razão social" sortBy="#{empresa.razaoSocial}">
 				<h:outputText value="#{empresa.razaoSocial}"/>

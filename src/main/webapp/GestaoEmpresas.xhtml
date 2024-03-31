@@ -44,8 +44,15 @@
 				<p:spacer width="9px"/>
 				
 				<p:commandButton title="Editar" icon="pi pi-file-edit"
-					disabled="#{not gestaoEmpresasBean.empresaSelecionada}"/>
+					disabled="#{not gestaoEmpresasBean.empresaSelecionada}"
+					actionListener="#{gestaoEmpresasBean.prepararEdicao}"
+					oncomplete="PF('empresaDialogWidgetVar').show()"
+					update="empresaDialog" process="@this">
+					<p:resetInput target="empresaDialog" />
+				</p:commandButton>	
+					
 				<p:spacer width="9px"/>
+				
 				<p:commandButton title="Excluir" icon="pi pi-trash"
 					disabled="#{not gestaoEmpresasBean.empresaSelecionada}"/>
 				

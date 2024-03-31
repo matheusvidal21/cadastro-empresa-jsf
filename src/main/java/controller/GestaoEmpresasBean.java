@@ -58,17 +58,20 @@ public class GestaoEmpresasBean implements Serializable {
 	
 	public void salvar() {
 		cadastroEmpresaService.salvar(empresa);
-		
-		if(jaHouvePesquisa()) {
-			pesquisar();
-		}else {
-			todasEmpresas();
-		}
+
+		atualizarRegistros();
 		
 		messages.info("Empresa salva com sucesso!");
 		
 		PrimeFaces.current().ajax().update(Arrays.asList("frm:empresasDataTable", "frm:message"));
 		
+	}
+	
+	public void excluir() {
+		cadastroEmpresaService.excluir(empresa);
+		empresa = null;
+		atualizarRegistros();
+		messages.info("Empresa excluída com sucesso");
 	}
 	
 	public void pesquisar() {
@@ -91,6 +94,14 @@ public class GestaoEmpresasBean implements Serializable {
 	
 	private boolean jaHouvePesquisa() {
 		return termoPesquisa != null && !"".equals(termoPesquisa);
+	}
+	
+	private void atualizarRegistros() {
+		if(jaHouvePesquisa()) {
+			pesquisar();
+		}else {
+			todasEmpresas();
+		}
 	}
 	
 	public List<Empresa> getListaEmpresas() {

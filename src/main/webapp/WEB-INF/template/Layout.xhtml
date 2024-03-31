@@ -31,6 +31,16 @@
 	<footer>
 		Curso "JSF e PrimeFaces Essencial"
 	</footer>
+	
+	<h:form>
+		<p:confirmDialog global="true" showEffect="fade" hideEffect="fade">
+			<p:commandButton value="Não" icon="pi pi-times" type="button" 
+				styleClass="ui-confirmdialog-no ui-button-flat"/>
+				
+			<p:commandButton value="Sim" icon="pi pi-check" type="button"
+				styleClass="ui-confirmdialog-yes"/>
+		</p:confirmDialog>
+	</h:form>
 
 </h:body>
 

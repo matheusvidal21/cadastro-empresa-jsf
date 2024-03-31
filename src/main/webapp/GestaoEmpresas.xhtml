@@ -66,7 +66,10 @@
 				<i class="pi pi-bars px-2"/>
 				<p:spacer width="9px"/>
 				
-				<p:commandButton title="Exportar para o Excel" icon="pi pi-file-export"/>
+				<p:commandButton title="Exportar para o Excel" icon="pi pi-file-export"
+					ajax="false">
+					<p:dataExporter type="xls" target="empresasDataTable" fileName="Empresas" />
+				</p:commandButton>
 			
 			</p:toolbarGroup>
 

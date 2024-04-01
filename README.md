@@ -21,14 +21,20 @@ O sistema oferece várias funcionalidades para os usuários, incluindo:
 
 ## Tecnologias utilizadas 💻
 
-- Java
-- JPA (Java Persistence API)
-- Tomcat
-- CDI (Contexts and Dependency Injection)
-- JSF (JavaServer Faces)
-- PrimeFaces
-- Hibernate
-- MVC (Model-View-Controller)
+<p align='center'> 
+    <img src="https://img.shields.io/badge/java-%23ED8B00.svg?style=for-the-badge&logo=openjdk&logoColor=white"/>
+    <img src="https://img.shields.io/badge/Apache%20Maven-C71A36?style=for-the-badge&logo=Apache%20Maven&logoColor=white"/>  
+    <img src="https://img.shields.io/badge/mysql-4479A1.svg?style=for-the-badge&logo=mysql&logoColor=white"/>
+    <img src="https://img.shields.io/badge/apache%20tomcat-%23F8DC75.svg?style=for-the-badge&logo=apache-tomcat&logoColor=black"/>
+    <img src="https://img.shields.io/badge/Eclipse-2C2255?style=for-the-badge&logo=eclipse&logoColor=white"/>
+    <img src="https://img.shields.io/badge/Hibernate-59666C?style=for-the-badge&logo=Hibernate&logoColor=white"/>
+    <img src="https://img.shields.io/badge/JavaServer%20Faces-8A2BE2?style=for-the-badge&logoColor=white"/>
+    <img src="https://img.shields.io/badge/Java%20Persistence%20API-FFFACD?style=for-the-badge&logoColor=white"/>
+    <img src="https://img.shields.io/badge/PrimeFaces-87CEEB?style=for-the-badge&logoColor=white"/>
+    <img src="https://img.shields.io/badge/Contexts%20and%20Dependency%20Injection-98FB98?style=for-the-badge&logoColor=white"/>
+    <img src="https://img.shields.io/badge/MVC-DC143C?style=for-the-badge&logoColor=white"/>
+</p>    
+
 
 ## Estrutura do Projeto 🏗️
 O projeto está estruturado com base no padrão de arquitetura MVC (Model-View-Controller), onde:

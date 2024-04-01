@@ -3,6 +3,8 @@
 
 O projeto é um sistema web para cadastro de empresas, desenvolvido utilizando tecnologias Java como JPA, JSF, PrimeFaces, Hibernate, entre outras. O sistema visa facilitar o gerenciamento e o registro de informações relacionadas a empresas, proporcionando uma interface amigável e funcionalidades úteis para os usuários.
 
+[demonstracao.webm](https://github.com/matheusvidal21/projeto-jsf-e-primefaces/assets/102569695/503a2413-1da3-4917-a7d7-b1290ca8b518)
+
 ## Funcionalidades do Sistema ⚙️
 O sistema oferece várias funcionalidades para os usuários, incluindo:
 

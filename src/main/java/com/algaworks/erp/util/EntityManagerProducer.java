@@ -1,4 +1,4 @@
-package util;
+package com.algaworks.erp.util;
 
 import javax.enterprise.context.ApplicationScoped;
 import javax.enterprise.context.RequestScoped;

@@ -1,4 +1,4 @@
-package controller;
+package com.algaworks.erp.controller;
 
 import java.util.List;
 

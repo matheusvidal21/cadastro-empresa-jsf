@@ -1,4 +1,4 @@
-package controller;
+package com.algaworks.erp.controller;
 
 import java.io.Serializable;
 import java.util.Arrays;
@@ -9,18 +9,15 @@ import javax.faces.view.ViewScoped;
 import javax.inject.Inject;
 import javax.inject.Named;
 
-import org.jboss.weld.context.RequestContext;
 import org.primefaces.PrimeFaces;
-import org.primefaces.context.PrimeRequestContext;
 
 import com.algaworks.erp.model.Empresa;
 import com.algaworks.erp.model.RamoAtividade;
 import com.algaworks.erp.model.TipoEmpresa;
 import com.algaworks.erp.repository.Empresas;
 import com.algaworks.erp.repository.RamoAtividades;
-
-import service.CadastroEmpresaService;
-import util.FacesMessages;
+import com.algaworks.erp.service.CadastroEmpresaService;
+import com.algaworks.erp.util.FacesMessages;
 
 @Named
 @ViewScoped

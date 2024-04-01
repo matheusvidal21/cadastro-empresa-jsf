@@ -1,4 +1,4 @@
-package util;
+package com.algaworks.erp.util;
 
 
 import java.io.Serializable;
